@@ -9,7 +9,8 @@ import { DocumentService } from '../service/document.service';
 })
 export class DocumentComponent implements OnInit {
 
-  documents = this.docServ.documents;
+  pageTitle: string = 'Document Dashboard';
+  documents: Document[] = this.docServ.documents;
 
   constructor(private docServ: DocumentService) { }
 
