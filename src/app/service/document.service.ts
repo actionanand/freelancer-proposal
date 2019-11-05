@@ -13,14 +13,14 @@ export class DocumentService {
       description: 'This is best amonst what I searched',
       file_url: 'https://www.google.com',
       updated_at: '2018/11/13',
-      image_url: 'google'
+      image_url: 'https://cdn.pixabay.com/photo/2015/01/26/10/23/office-612532_960_720.jpg'
       },
       {
         title: 'Second Document',
         description: 'This is nice amonst what I searched',
         file_url: 'https://www.google.com',
         updated_at: '2019/10/17',
-        image_url: 'google'
+        image_url: 'https://cdn.pixabay.com/photo/2014/05/02/21/49/home-office-336373_960_720.jpg'
       }
   ];
 

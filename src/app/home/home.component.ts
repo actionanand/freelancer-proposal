@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  imgUrl: string = 'https://baypath.s3.amazonaws.com/files/events/169_825_woman-hand-smartphone-laptop-2.jpg';
   constructor() { }
 
   ngOnInit() {

@@ -2,3 +2,7 @@ input.ng-invalid.ng-touched{
     border: solid 1px;
     color: red;
 }
+
+.form-container{
+    padding: 30px;
+}
