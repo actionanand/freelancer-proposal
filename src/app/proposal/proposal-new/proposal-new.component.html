@@ -4,15 +4,21 @@
         <div class="form-group">
             <label for="customer">Customer Name</label>
             <input type="text" id="customer" placeholder="Enter Customer Name"
-            required name="customer"
+            required minlength="3" name="customer"
             #customer="ngModel" [(ngModel)]="proposal.customer">
+            <span class="help-block text-danger" *ngIf="!customer.valid && customer.touched">
+                Customer name is required!</span> &nbsp;
+            <span class="help-block text-danger" [hidden]="customer.valid || customer.pristine">
+                Customer name is invalid, minimum 3 char</span>
         </div>
-
+        
         <div class="form-group">
             <label for="portfolio_url">portfolio url</label>
             <input type="text" id="portfolio_url"
-            required name="portfolio_url"
+            required minlength="11" name="portfolio_url"
             #portfolio_url="ngModel" [(ngModel)]="proposal.portfolio_url">
+            <span class="help-block text-danger" *ngIf="!portfolio_url.valid && portfolio_url.touched">
+                Valid portfolio url is required!</span>
         </div>
 
         <div class="form-group">
@@ -20,6 +26,8 @@
             <input type="text" id="tools" placeholder="Enter the tools like angular"
             required name="tools"
             #tools="ngModel" [(ngModel)]="proposal.tools">
+            <span class="help-block text-danger" *ngIf="!tools.valid && tools.touched">
+                tools field is required!</span>
         </div>
 
         <div class="form-group">
@@ -27,6 +35,8 @@
             <input type="number" id="estimated_hours" placeholder="Your estimated hours"
             required name="estimated_hours"
             #estimated_hours="ngModel" [(ngModel)]="proposal.estimated_hours">
+            <span class="help-block text-danger" *ngIf="!estimated_hours.valid && estimated_hours.touched">
+                Estimated hour is required!</span>
         </div>
 
         <div class="form-group">
@@ -34,6 +44,8 @@
             <input type="number" id="hourly_rate" placeholder="Your rate &#x20b9; per hour"
             required name="hourly_rate"
             #hourly_rate="ngModel" [(ngModel)]="proposal.hourly_rate">
+            <span class="help-block text-danger" *ngIf="!hourly_rate.valid && hourly_rate.touched">
+                hourly rate is required!</span>
         </div>
 
         <div class="form-group">
@@ -41,13 +53,17 @@
             <input type="number" id="weeks_to_complete" placeholder="Your estimated weeks"
             required name="weeks_to_complete"
             #weeks_to_complete="ngModel" [(ngModel)]="proposal.weeks_to_complete">
+            <span class="help-block text-danger" *ngIf="!weeks_to_complete.valid && weeks_to_complete.touched">
+                Estimated week is required!</span>
         </div>
 
         <div class="form-group">
             <label for="client_email">Email Address</label>
             <input type="email" id="client_email" placeholder="email address"
-            name="client_email"
+            required name="client_email"
             #client_email="ngModel" [(ngModel)]="proposal.client_email">
+            <span class="help-block text-danger" *ngIf="!client_email.valid && client_email.touched">
+                email is required to contact!</span>
         </div>
     </form>
 
