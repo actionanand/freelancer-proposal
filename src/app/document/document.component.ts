@@ -29,7 +29,7 @@ export class DocumentComponent implements OnInit, OnDestroy {
     this.docSub = this.docServ.getDocuments().subscribe(
       documents => {
         this.documents = documents;
-        console.log('doc sub');
+        // console.log('doc sub');
       },
       error =>{
         this.errorMsg = error;
