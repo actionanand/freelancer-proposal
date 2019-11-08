@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -26,8 +26,22 @@ export class ProposalService {
     );
   }
 
+  createProposal(proposal: Proposal){
+    return this.http.post(this.proposalUrl +'.json', JSON.stringify(proposal),
+    {
+      headers: new HttpHeaders({'content-type': 'Application/json'})
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError (errorResp: HttpErrorResponse) {
-    return throwError(errorResp.statusText);
+    if(!!errorResp.statusText){
+      return throwError(errorResp.statusText);
+    }else
+    {
+      return throwError('Please contact app owner');
+    }
   }
 
 }

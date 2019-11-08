@@ -3,7 +3,7 @@
         <div class="col-md-6">
             <h2 style="text-align: center;">Create A Proposal</h2>
             <div>
-                <form #proposalForm="ngForm">
+                <form (ngSubmit)="onCreateProposal(proposalForm)" #proposalForm="ngForm">
                     <div class="form-group">
                         <label for="customer">Customer Name</label>
                         <input type="text" id="customer" placeholder="Enter Customer Name"
@@ -75,14 +75,26 @@
                     </div>
             
                     <div class="form-group">
-                        <label for="client_email">Email Address</label>
+                        <label for="client_email">Email Address <em>(optional)</em></label>
                         <input type="email" id="client_email" placeholder="email address"
-                        required name="client_email"
+                        name="client_email"
                         class="form-control"
                         #client_email="ngModel" [(ngModel)]="proposal.client_email">
-                        <span class="help-block text-danger" *ngIf="!client_email.valid && client_email.touched">
-                            Email is required to contact!</span>
+                        <!-- <span class="help-block text-danger" *ngIf="!client_email.valid && client_email.touched">
+                            Email is required to contact!</span> -->
                     </div>
+                    <br>
+                    <button class="btn btn-outline-success" type="submit"
+                    [disabled]="!proposalForm.valid"
+                    [hidden]="submitted">Generate Proposal</button>
+
+                    <ngb-alert [type]="type" [dismissible]="true" (click)="onClose()" *ngIf="!alertClosed">
+                        {{message}} &nbsp; <a routerLink="/proposals" class="alert-link"> View all Proposals </a>
+                    </ngb-alert>
+
+                    <!-- <div  role="alert"  >
+                        Proposal Submited.<a routerLink="/proposals" class="alert-link"> View Proposals </a>
+                    </div> -->
                 </form>
             </div>
         </div>
