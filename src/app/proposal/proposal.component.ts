@@ -16,11 +16,12 @@ export class ProposalComponent implements OnInit, OnDestroy {
   errorMsg: string;
   proposalSub: Subscription;
   timerSub: Subscription;
+  loading: boolean = false;
 
   constructor(private proposalServ: ProposalService) { }
 
   ngOnInit() {
-    this.timerSub = timer(0, 5000).subscribe(
+    this.timerSub = timer(0, 2000000).subscribe(
       ()=> this.onGetProposals()
     );
   }
@@ -29,13 +30,20 @@ export class ProposalComponent implements OnInit, OnDestroy {
     this.proposalSub = this.proposalServ.getProposals().subscribe(
       proposals => {
         this.proposals = proposals;
+        this.loading = false;
         // console.log('doc sub');
       },
       error =>{
         this.errorMsg = error;
+        this.loading = false;
         // console.log(this.errorMsg);
       }
     );
+  }
+
+  onClose(){
+    this.errorMsg = null;
+    this.loading = false;
   }
 
   ngOnDestroy(){

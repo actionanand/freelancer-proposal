@@ -1,4 +1,8 @@
-<div class="col-md-8 offset-md-2">
+<div *ngIf="loading && !errorMsg">
+    <app-charging></app-charging>
+</div>
+
+<div class="col-md-8 offset-md-2" *ngIf="!loading">
     <div class="list-group">
         <a class="list-group-item list-group-item-action flex-column align-items-start active">
             <div class="d-flex w-100 justify-content-between">
@@ -15,4 +19,11 @@
             </a>
         </span>
      </div>
+</div>
+
+<div class="col-md-8 offset-md-2">
+    <br>
+    <ngb-alert [type]="'danger'" [dismissible]="true" (click)="onClose()" *ngIf="!!errorMsg">
+        {{errorMsg}} &nbsp; <a routerLink="/home" class="alert-link"> Visit Home </a>
+    </ngb-alert>
 </div>

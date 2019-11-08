@@ -14,6 +14,7 @@ import { ProposalShowComponent } from './proposal/proposal-show/proposal-show.co
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 import { Page404Component } from './page404/page404.component';
+import { ChargingComponent } from './loading-spinner/charging/charging.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { Page404Component } from './page404/page404.component';
     ProposalShowComponent,
     NavigationComponent,
     FooterComponent,
-    Page404Component
+    Page404Component,
+    ChargingComponent
   ],
   imports: [
     BrowserModule,

@@ -14,29 +14,38 @@ export class DocumentComponent implements OnInit, OnDestroy {
 
   pageTitle: string = 'Document Dashboard';
   documents: Document[];
-  errorMsg: string;
+  errorMsg: string = null;
   docSub: Subscription;
   timerSub: Subscription;
+  loading: boolean = false;
 
   constructor(private docServ: DocumentService) { }
 
   ngOnInit() {
-    this.timerSub = timer(0, 5000).subscribe(
+    this.timerSub = timer(0, 2000000).subscribe(
       ()=> this.onGetDoc()
     );
   }
 
   onGetDoc(){
+    this.loading = true;
     this.docSub = this.docServ.getDocuments().subscribe(
       documents => {
         this.documents = documents;
+        this.loading = false;
         // console.log('doc sub');
       },
       error =>{
         this.errorMsg = error;
+        this.loading = false;
         // console.log(this.errorMsg);
       }
     );
+  }
+
+  onClose(){
+    this.errorMsg = null;
+    this.loading = false;
   }
 
   ngOnDestroy(){

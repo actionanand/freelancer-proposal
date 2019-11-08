@@ -10,8 +10,8 @@ import { Document } from '../document/document';
 })
 export class DocumentService {
 
-  // private documentUrl = 'https://freelance-apiapp.herokuapp.com/freelance_documents.json';
-  private documentUrl = 'http://localhost:3000/freelance_documents.json';
+  private documentUrl = 'https://freelance-apiapp.herokuapp.com/freelance_documents.json';
+  // private documentUrl = 'http://localhost:3000/freelance_documents.json';
 
   // public documents: Document[]=[
   //   {
