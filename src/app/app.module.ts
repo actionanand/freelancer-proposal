@@ -12,6 +12,8 @@ import { ProposalComponent } from './proposal/proposal.component';
 import { ProposalNewComponent } from './proposal/proposal-new/proposal-new.component';
 import { ProposalShowComponent } from './proposal/proposal-show/proposal-show.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { FooterComponent } from './footer/footer.component';
+import { Page404Component } from './page404/page404.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { NavigationComponent } from './navigation/navigation.component';
     ProposalComponent,
     ProposalNewComponent,
     ProposalShowComponent,
-    NavigationComponent
+    NavigationComponent,
+    FooterComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,

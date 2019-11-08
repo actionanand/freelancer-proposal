@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { flatMap, take } from 'rxjs/operators';
 import { ProposalService } from 'src/app/service/proposal.service';
@@ -15,13 +15,16 @@ export class ProposalShowComponent implements OnInit, OnDestroy {
   proposalSub: Subscription;
   proposal:Proposal;
 
-  constructor(private route: ActivatedRoute, private proposalSrv: ProposalService) { }
+  constructor(private route: ActivatedRoute, private proposalSrv: ProposalService, private router:Router) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params)=>{
       this.proposalSub = this.proposalSrv.getProposal(params['id']).subscribe(proposal=>{
         this.proposal = proposal;
         // console.log(proposal);
+      },
+      error=>{
+        this.router.navigate(['/page-not-found']);
       });
     })
   }

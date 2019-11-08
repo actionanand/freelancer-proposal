@@ -10,7 +10,8 @@ import { Proposal } from '../proposal/proposal';
 })
 export class ProposalService {
 
-  private proposalUrl: string = 'http://127.0.0.1:3000/proposals';
+  // private proposalUrl: string = 'https://freelance-apiapp.herokuapp.com/proposals';
+  private proposalUrl: string = 'http://localhost:3000/proposals';
 
   constructor(private http: HttpClient) { }
 
