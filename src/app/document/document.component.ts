@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Document } from './document';
-import { DocumentService } from '../service/document.service';
 import { Subscription } from 'rxjs';
 import { timer } from 'rxjs';
+
+import { DocumentService } from '../service/document.service';
+import { Document } from './document';
 
 @Component({
   selector: 'app-document',
