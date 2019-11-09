@@ -17,17 +17,21 @@ export class ProposalNewComponent implements OnInit, OnDestroy {
   message: string;
   alertClosed: boolean = true;
   type: string;
+  isMailSent: boolean = false;
+  email:string = null;
 
   constructor(private proposalServ: ProposalService) { }
 
   onCreateProposal(form: NgForm){
+    this.email = form.value.client_email;
     this.createProposalSub = this.proposalServ.createProposal(form.value).subscribe(
       data=>{
         this.message = 'Proposal submitted successfuly';
         this.type = 'success';
+        this.isMailSent = !!this.email;
       },
       error=>{
-        this.message = 'Proposal not submitted';
+        this.message = 'Proposal not submitted, try after sometime';
         this.type = 'danger';
       });
     this.submitted = true;
@@ -42,6 +46,7 @@ export class ProposalNewComponent implements OnInit, OnDestroy {
   onClose(){
     this.alertClosed = true;
     this.submitted = false;
+    this.isMailSent = false;
   }
 
   ngOnDestroy(){

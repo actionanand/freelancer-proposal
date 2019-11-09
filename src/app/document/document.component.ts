@@ -16,15 +16,16 @@ export class DocumentComponent implements OnInit, OnDestroy {
   documents: Document[];
   errorMsg: string = null;
   docSub: Subscription;
-  timerSub: Subscription;
+  // timerSub: Subscription;
   loading: boolean = false;
 
   constructor(private docServ: DocumentService) { }
 
   ngOnInit() {
-    this.timerSub = timer(0, 2000000).subscribe(
-      ()=> this.onGetDoc()
-    );
+    // this.timerSub = timer(0, 5000).subscribe(
+    //   ()=> this.onGetDoc()
+    // );
+    this.onGetDoc();
   }
 
   onGetDoc(){
@@ -49,7 +50,7 @@ export class DocumentComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.timerSub.unsubscribe();
+    // this.timerSub.unsubscribe();
     this.docSub.unsubscribe();
   }
 

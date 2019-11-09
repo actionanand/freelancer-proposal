@@ -12,7 +12,7 @@
         <span *ngFor="let proposal of proposals">
             <a routerLink="{{proposal.id}}" class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"> {{proposal.customer}} </h5>
+                    <h5 class="mb-1"> {{proposal.customer | titlecase}} </h5>
                 </div>
                 <p class="mb-1"> Estimation - {{ proposal.hourly_rate * proposal.estimated_hours | currency:'&#x20b9;':'symbol':'.2'}} </p>
                 <p class="mb-1"> {{proposal.tools}} &nbsp; will be used.</p>

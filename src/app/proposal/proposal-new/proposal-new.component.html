@@ -80,21 +80,22 @@
                         name="client_email"
                         class="form-control"
                         #client_email="ngModel" [(ngModel)]="proposal.client_email">
-                        <!-- <span class="help-block text-danger" *ngIf="!client_email.valid && client_email.touched">
-                            Email is required to contact!</span> -->
+                        <span class="help-block text-success" *ngIf="client_email.pristine && client_email.touched">
+                            Please provide your email to be in touch!</span>
                     </div>
                     <br>
                     <button class="btn btn-outline-success" type="submit"
                     [disabled]="!proposalForm.valid"
                     [hidden]="submitted">Generate Proposal</button>
 
+                    <ngb-alert [type]="'success'" [dismissible]="false" *ngIf="isMailSent">
+                        Please check your email !
+                    </ngb-alert>
+
                     <ngb-alert [type]="type" [dismissible]="true" (click)="onClose()" *ngIf="!alertClosed">
                         {{message}} &nbsp; <a routerLink="/proposals" class="alert-link"> View all Proposals </a>
                     </ngb-alert>
 
-                    <!-- <div  role="alert"  >
-                        Proposal Submited.<a routerLink="/proposals" class="alert-link"> View Proposals </a>
-                    </div> -->
                 </form>
             </div>
         </div>

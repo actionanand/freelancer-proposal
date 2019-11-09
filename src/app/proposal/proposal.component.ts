@@ -13,20 +13,22 @@ import { ProposalService } from '../service/proposal.service';
 export class ProposalComponent implements OnInit, OnDestroy {
 
   proposals :Proposal[];
-  errorMsg: string;
+  errorMsg: string = null;
   proposalSub: Subscription;
-  timerSub: Subscription;
+  // timerSub: Subscription;
   loading: boolean = false;
 
   constructor(private proposalServ: ProposalService) { }
 
   ngOnInit() {
-    this.timerSub = timer(0, 2000000).subscribe(
-      ()=> this.onGetProposals()
-    );
+    // this.timerSub = timer(0, 5000).subscribe(
+    //   ()=> this.onGetProposals()
+    // );
+    this.onGetProposals();
   }
 
   onGetProposals(){
+    this.loading = true;
     this.proposalSub = this.proposalServ.getProposals().subscribe(
       proposals => {
         this.proposals = proposals;
@@ -48,6 +50,6 @@ export class ProposalComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.proposalSub.unsubscribe();
-    this.timerSub.unsubscribe();
+    // this.timerSub.unsubscribe();
   }
 }
